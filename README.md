@@ -1,10 +1,10 @@
 # КЕДР 01 — Земля подождёт
 
-[![Checks and deployment](https://github.com/dffdeeq/gpt-land/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/dffdeeq/gpt-land/actions/workflows/deploy-pages.yml)
+[![Checks and deployment](https://github.com/dffdeeq/kedr-01/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/dffdeeq/kedr-01/actions/workflows/deploy-pages.yml)
 
 Интерактивный лендинг вымышленного гражданского летательного аппарата. Прокрутка поворачивает КЕДР, разбирает его на узлы и собирает обратно; в конце можно выбрать комплектацию и скачать спецификацию.
 
-**[Открыть сайт →](https://dffdeeq.github.io/gpt-land/)**
+**[Открыть сайт →](https://dffdeeq.github.io/kedr-01/)**
 
 ![КЕДР 01: сине-жёлтый аппарат с чёрным винтом и живым хвойным модулем](public/media/poster.webp)
 
@@ -23,8 +23,8 @@
 Рекомендуется Node.js 24 (версия указана в `.nvmrc`); минимальная версия — 22.12. Для локальных браузерных тестов нужен установленный Google Chrome.
 
 ```sh
-git clone https://github.com/dffdeeq/gpt-land.git
-cd gpt-land
+git clone https://github.com/dffdeeq/kedr-01.git
+cd kedr-01
 npm ci
 npm run dev
 ```
@@ -78,7 +78,7 @@ index.html            Семантическая разметка страниц
 Повторяемый замер production-сборки или опубликованного сайта:
 
 ```sh
-node scripts/measure-sequence.mjs https://dffdeeq.github.io/gpt-land/ --mobile --throttle
+node scripts/measure-sequence.mjs https://dffdeeq.github.io/kedr-01/ --mobile --throttle
 ```
 
 Скрипт прокручивает анимацию вперёд и назад с холодным и прогретым кэшем. Профиль `--throttle` задаёт 5 Мбит/с, задержку 150 мс и замедление CPU в 4 раза. Это лабораторная эмуляция, а не измерение реального телефона. `exactFramePercent` сравнивает желаемый и действительно показанный кадр на каждом animation frame; `repeatRequests` показывает повторные запросы. Тесты также проверяют границы кэша, освобождение памяти, отмену загрузок и режим без `ImageBitmap`.
@@ -89,11 +89,11 @@ Workflow [Check and deploy](.github/workflows/deploy-pages.yml) проверяе
 
 В **Settings → Pages → Source** должен быть выбран **GitHub Actions**. Дополнительные ключи не нужны: используется штатный `GITHUB_TOKEN`, право публикации есть только у deploy-job.
 
-Базовый путь берётся из настроек Pages. Проверка production-сборки по адресу `/gpt-land/` в PowerShell:
+Базовый путь берётся из настроек Pages. Проверка production-сборки по адресу `/kedr-01/` в PowerShell:
 
 ```powershell
-npm run build -- --base=/gpt-land/
-$env:PAGES_BASE_PATH = '/gpt-land/'
+npm run build -- --base=/kedr-01/
+$env:PAGES_BASE_PATH = '/kedr-01/'
 $env:PLAYWRIGHT_PREVIEW = 'true'
 npm run test:e2e
 Remove-Item Env:PAGES_BASE_PATH, Env:PLAYWRIGHT_PREVIEW
@@ -102,7 +102,7 @@ Remove-Item Env:PAGES_BASE_PATH, Env:PLAYWRIGHT_PREVIEW
 Проверка уже опубликованного сайта без локального сервера:
 
 ```powershell
-$env:PLAYWRIGHT_BASE_URL = 'https://dffdeeq.github.io/gpt-land/'
+$env:PLAYWRIGHT_BASE_URL = 'https://dffdeeq.github.io/kedr-01/'
 npm run test:e2e
 Remove-Item Env:PLAYWRIGHT_BASE_URL
 ```

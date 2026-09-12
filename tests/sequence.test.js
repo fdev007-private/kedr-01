@@ -31,12 +31,12 @@ test('frame URLs use valid exported indices on both screen sizes', () => {
 
 test('frame URLs respect a GitHub Pages project prefix', () => {
   assert.equal(
-    frameSource(0, 'desktop', '/gpt-land/'),
-    '/gpt-land/media/frames/desktop/frame-0001.webp',
+    frameSource(0, 'desktop', '/kedr-01/'),
+    '/kedr-01/media/frames/desktop/frame-0001.webp',
   );
   assert.equal(
-    frameSource(239, 'mobile', '/gpt-land'),
-    '/gpt-land/media/frames/mobile/frame-0240.webp',
+    frameSource(239, 'mobile', '/kedr-01'),
+    '/kedr-01/media/frames/mobile/frame-0240.webp',
   );
 });
 
@@ -213,8 +213,8 @@ test('failed downloads and corrupt frames leave the closest usable fallback with
 
 test('packed WebP frames preserve bytes and reject truncated or malformed packets', async () => {
   assert.equal(
-    framePackSource(14, 'mobile', '/gpt-land/'),
-    '/gpt-land/media/packs/v1/mobile/pack-0015.bin',
+    framePackSource(14, 'mobile', '/kedr-01/'),
+    '/kedr-01/media/packs/v1/mobile/pack-0015.bin',
   );
   const buffer = new ArrayBuffer(16 * 12);
   const view = new DataView(buffer);

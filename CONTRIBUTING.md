@@ -11,7 +11,7 @@
 ```sh
 npm run format
 npm run check
-npm run build -- --base=/gpt-land/
+npm run build -- --base=/kedr-01/
 ```
 
 Затем прогоните браузерные тесты production-сборки по инструкции в [README](README.md#github-pages). Для локальных тестов нужен Google Chrome; они используют отдельный headless-профиль.
