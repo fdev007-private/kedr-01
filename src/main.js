@@ -1,4 +1,11 @@
-import { FrameSequence, clamp, progressToFrame, scrollProgress, chapterAt } from './sequence.js';
+import {
+  FRAME_COUNT,
+  FrameSequence,
+  clamp,
+  progressToFrame,
+  scrollProgress,
+  chapterAt,
+} from './sequence.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -11,6 +18,7 @@ const context = canvas.getContext('2d', { alpha: false });
 const poster = $('#stage-poster');
 const status = $('#sequence-status');
 const progressBar = $('#journey-progress');
+const vignette = $('.stage-vignette');
 const panels = Object.fromEntries($$('[data-panel]').map((panel) => [panel.dataset.panel, panel]));
 let sequence;
 let displayProgress = 0;
@@ -19,6 +27,7 @@ let tickScheduled = false;
 let lastRequestedFrame = -1;
 let lastChapter = -1;
 let viewport = { width: 0, height: 0, dpr: 1 };
+let lastDrawn = null;
 
 function smoothstep(from, to, value) {
   const x = clamp((value - from) / (to - from));
@@ -43,6 +52,7 @@ function sizeCanvas() {
     viewport = { width, height, dpr };
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
+    lastDrawn = null;
   }
 }
 
@@ -50,9 +60,16 @@ function drawScene() {
   if (!context) return;
   const picture = sequence?.current() || (poster.complete && poster.naturalWidth ? poster : null);
   if (!picture) return;
+  const sceneFrame = progressToFrame(displayProgress);
+  const frame = motionPreference.matches ? 0 : sceneFrame;
+  canvas.dataset.frame = String(frame);
+  canvas.dataset.drawnFrame = String(sequence?.displayedFrame ?? 0);
+  if (lastDrawn?.picture === picture && lastDrawn.sceneFrame === sceneFrame) return;
+  lastDrawn = { picture, sceneFrame };
   const { width, height, dpr } = viewport;
+  const sceneProgress = sceneFrame / (FRAME_COUNT - 1);
   const openAmount =
-    smoothstep(0.4, 0.53, displayProgress) * (1 - smoothstep(0.8, 0.98, displayProgress));
+    smoothstep(0.4, 0.53, sceneProgress) * (1 - smoothstep(0.8, 0.98, sceneProgress));
   const mobile = smallScreen.matches;
   const imageWidth = mobile
     ? blend(Math.min(width * 1.72, height * 1.12), width * 1.04, openAmount)
@@ -102,8 +119,7 @@ function drawScene() {
     context.fillStyle = gradient;
     context.fillRect(left, top, edgeWidth, edgeHeight);
   }
-  $('.stage-vignette').style.opacity = String(blend(1, 0.35, openAmount));
-  canvas.dataset.frame = String(motionPreference.matches ? 0 : progressToFrame(displayProgress));
+  vignette.style.opacity = String(blend(1, 0.35, openAmount));
   stage.classList.add('has-canvas');
 }
 
@@ -166,6 +182,7 @@ function tick() {
 function configureSequence() {
   sequence?.destroy();
   sequence = null;
+  lastDrawn = null;
   lastRequestedFrame = -1;
   if (motionPreference.matches || !context) {
     status.textContent =
@@ -174,7 +191,7 @@ function configureSequence() {
     sequence = new FrameSequence({
       variant: smallScreen.matches ? 'mobile' : 'desktop',
       base: import.meta.env.BASE_URL,
-      concurrency: navigator.connection?.saveData ? 2 : 4,
+      concurrency: navigator.connection?.saveData ? 2 : 3,
       onFrame: requestTick,
       onProgress: (loaded, total) => {
         if (loaded === total)

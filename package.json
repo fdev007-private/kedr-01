@@ -13,8 +13,8 @@
     "url": "https://github.com/dffdeeq/gpt-land/issues"
   },
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "node scripts/check-assets.mjs && vite build",
+    "dev": "node scripts/build-frame-packs.mjs && vite --host 127.0.0.1",
+    "build": "node scripts/check-assets.mjs && node scripts/build-frame-packs.mjs && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "lint": "eslint .",
     "format": "prettier --write index.html README.md CONTRIBUTING.md package.json package-lock.json \"*.config.js\" \"src/**/*.{js,css}\" \"scripts/*.mjs\" \"tests/*.js\" \".github/**/*.yml\"",

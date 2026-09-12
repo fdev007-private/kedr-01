@@ -11,8 +11,7 @@ test('landing page renders, scrolls through the assembly sequence, and has no ov
     if (response.status() >= 400) missingAssets.push(`${response.status()} ${response.url()}`);
   });
   const firstFrame = page.waitForResponse(
-    (response) =>
-      response.url().startsWith(new URL('media/frames/', baseURL).href) && response.ok(),
+    (response) => response.url().startsWith(new URL('media/packs/', baseURL).href) && response.ok(),
   );
   await page.goto('./');
   await firstFrame;
@@ -31,6 +30,7 @@ test('landing page renders, scrolls through the assembly sequence, and has no ov
   }
   await page.locator('[data-chapter-target="0.53"]').click();
   await expect(page.locator('#stage')).toHaveAttribute('data-chapter', '1');
+  await expect(page.locator('#aircraft-canvas')).toHaveAttribute('data-drawn-frame', '127');
   await expect
     .poll(async () => Number(await page.locator('#aircraft-canvas').getAttribute('data-frame')))
     .toBeGreaterThan(100);
@@ -78,7 +78,7 @@ test('reduced motion uses a static poster without fetching the entire sequence',
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const frames = [];
   page.on('request', (request) => {
-    if (request.url().includes('/media/frames/')) frames.push(request.url());
+    if (/\/media\/(frames|packs)\//.test(request.url())) frames.push(request.url());
   });
   await page.goto('./');
   await expect(page.locator('#sequence-status')).toContainText('Статичный режим');
@@ -109,4 +109,39 @@ test('the film loads on demand and closes with the keyboard', async ({ page, bas
   await expect
     .poll(() => page.locator('#product-film').evaluate((video) => video.paused))
     .toBe(true);
+});
+
+test('cached frames survive chapter jumps without repeated downloads', async ({ page }) => {
+  const requests = [];
+  await page.route('**/media/packs/**', async (route) => {
+    requests.push(route.request().url());
+    // Routing also disables the HTTP cache: only the application cache can satisfy revisits.
+    await new Promise((resolve) => setTimeout(resolve, 25));
+    await route.continue();
+  });
+  await page.goto('./');
+  await expect(page.locator('#sequence-status')).toContainText('Анимация готова', {
+    timeout: 20_000,
+  });
+  for (const progress of [0.91, 0.53, 0, 0.91]) {
+    await page.locator(`[data-chapter-target="${progress}"]`).first().click();
+    await expect(page.locator('#aircraft-canvas')).toHaveAttribute(
+      'data-drawn-frame',
+      String(Math.round(progress * 239)),
+    );
+  }
+  expect(new Set(requests).size).toBe(15);
+  expect(requests).toHaveLength(15);
+});
+
+test('image-element decoding remains available without ImageBitmap support', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.createImageBitmap = undefined;
+  });
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('./');
+  await page.locator('[data-chapter-target="0.53"]').click();
+  await expect(page.locator('#aircraft-canvas')).toHaveAttribute('data-drawn-frame', '127');
+  expect(errors).toEqual([]);
 });
