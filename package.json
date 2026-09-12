@@ -4,13 +4,13 @@
   "description": "KEDR 01: an interactive concept aircraft landing page with a scroll-driven assembly sequence.",
   "private": true,
   "type": "module",
-  "homepage": "https://dffdeeq.github.io/kedr-01/",
+  "homepage": "https://furrydev2007.github.io/kedr-01/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dffdeeq/kedr-01.git"
+    "url": "git+https://github.com/furrydev2007/kedr-01.git"
   },
   "bugs": {
-    "url": "https://github.com/dffdeeq/kedr-01/issues"
+    "url": "https://github.com/furrydev2007/kedr-01/issues"
   },
   "scripts": {
     "dev": "node scripts/build-frame-packs.mjs && vite --host 127.0.0.1",
