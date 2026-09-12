@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101010" />
+    <title>КЕДР 01 — Земля подождёт</title>
+    <meta
+      name="description"
+      content="КЕДР 01. Гражданский летательный аппарат с собственным характером. Рассмотрите конструкцию, исследуйте каждый узел и выберите свою комплектацию."
+    />
+    <meta property="og:title" content="КЕДР 01 — Земля подождёт" />
+    <meta
+      property="og:description"
+      content="Гражданский летательный аппарат. Цельный характер. Продуманная конструкция. Ваш маршрут."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:image" content="https://dffdeeq.github.io/gpt-land/media/poster.webp" />
+    <meta property="og:url" content="https://dffdeeq.github.io/gpt-land/" />
+    <link rel="canonical" href="https://dffdeeq.github.io/gpt-land/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/media/poster.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#details">Перейти к устройству аппарата</a>
+    <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14" /></symbol>
+      <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 3v17m-7-7 7 7 7-7" /></symbol>
+      <symbol id="tree" viewBox="0 0 32 40">
+        <path d="m16 1-9 14h6L4 28h10v11h4V28h10L19 15h6Z" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="play" viewBox="0 0 24 24">
+        <path d="m9 6 10 6-10 6Z" fill="currentColor" stroke="none" />
+      </symbol>
+      <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
+      <symbol id="plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" /></symbol>
+    </svg>
+
+    <header class="site-header" id="header">
+      <a class="brand" href="#top" aria-label="КЕДР — на главную">
+        <svg class="brand-tree" aria-hidden="true"><use href="#tree" /></svg>
+        <span>кедр</span><span class="brand-edition">01</span>
+      </a>
+      <nav class="header-nav" id="navigation" aria-label="Главная навигация">
+        <a href="#top">Аппарат</a>
+        <a href="#details">Устройство</a>
+        <a href="#philosophy">Философия</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-cta" data-open-config>
+          Выбрать свой <svg aria-hidden="true"><use href="#arrow-up-right" /></svg>
+        </button>
+        <button
+          class="menu-toggle"
+          aria-label="Открыть меню"
+          aria-controls="navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="journey" id="top" aria-label="Знакомство с КЕДР 01">
+        <div class="stage" id="stage" data-chapter="0">
+          <div class="stage-visual" aria-hidden="true">
+            <canvas id="aircraft-canvas" width="1280" height="720" data-frame="0"></canvas>
+            <img
+              class="stage-fallback"
+              id="stage-poster"
+              src="/media/poster.webp"
+              alt=""
+              width="1280"
+              height="720"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="stage-vignette" aria-hidden="true"></div>
+          <div class="intro-panel scene-panel" data-panel="intro">
+            <div class="product-caption">
+              <span class="color-mark" aria-hidden="true"></span>Гражданский летательный аппарат
+            </div>
+            <h1>Земля<br />подождёт.</h1>
+            <div class="intro-bottom">
+              <p>
+                КЕДР 01. Для тех, кто выбирает<br class="desktop-break" />
+                собственную траекторию.
+              </p>
+              <button class="text-button" data-open-film>
+                <span class="play-circle"
+                  ><svg aria-hidden="true"><use href="#play" /></svg></span
+                >Смотреть фильм<span class="film-length">00:28</span>
+              </button>
+            </div>
+          </div>
+          <div class="orbit-panel scene-panel" data-panel="orbit" aria-hidden="true" inert>
+            <span class="scene-label">Характер, который узнают</span>
+            <h2>Свой путь.<br />Со всех сторон.</h2>
+            <p>
+              Чёткий силуэт. Открытая конструкция.<br />И живая деталь, которую не спутаешь<br
+                class="desktop-break"
+              />
+              ни с чем.
+            </p>
+          </div>
+          <div class="exploded-panel scene-panel" data-panel="exploded" aria-hidden="true" inert>
+            <span class="scene-label">Целое начинается с деталей</span>
+            <h2>
+              Каждая деталь.<br />
+              На своём месте.
+            </h2>
+            <p>Корпус, привод, каркас, опоры.<br />У каждого элемента есть своё место.</p>
+          </div>
+          <div class="assembly-panel scene-panel" data-panel="assembly" aria-hidden="true" inert>
+            <span class="scene-label">Всё снова на своих местах</span>
+            <h2>Вместе —<br />значит КЕДР.</h2>
+            <p>Разные элементы. Единый характер.<br />Теперь осталось выбрать ваш маршрут.</p>
+            <button class="pill-button" data-open-config>
+              Выбрать комплектацию<svg aria-hidden="true"><use href="#arrow-up-right" /></svg>
+            </button>
+          </div>
+          <div class="stage-bottom">
+            <button class="scroll-cue" id="scroll-cue">
+              <svg aria-hidden="true"><use href="#arrow-down" /></svg
+              ><span>Прокрутите, чтобы познакомиться</span>
+            </button>
+            <div class="chapter-navigation" aria-label="Главы анимации">
+              <button
+                class="chapter-button is-active"
+                data-chapter-target="0"
+                aria-label="Глава 1: Облёт"
+                aria-current="step"
+              >
+                <span>01</span><span class="chapter-name">Облёт</span>
+              </button>
+              <span class="chapter-line" aria-hidden="true"></span>
+              <button
+                class="chapter-button"
+                data-chapter-target="0.53"
+                aria-label="Глава 2: Устройство"
+              >
+                <span>02</span><span class="chapter-name">Устройство</span>
+              </button>
+              <span class="chapter-line" aria-hidden="true"></span>
+              <button
+                class="chapter-button"
+                data-chapter-target="0.91"
+                aria-label="Глава 3: Сборка"
+              >
+                <span>03</span><span class="chapter-name">Сборка</span>
+              </button>
+            </div>
+            <span class="scene-counter" aria-hidden="true"
+              >КЕДР / <span id="scene-number">01</span></span
+            >
+          </div>
+          <div class="journey-track" aria-hidden="true"><span id="journey-progress"></span></div>
+          <span class="sr-only" id="sequence-status" role="status"
+            >Подготавливаем анимацию аппарата.</span
+          >
+        </div>
+      </section>
+
+      <section class="manifesto section-pad" id="philosophy" aria-labelledby="manifesto-heading">
+        <div class="section-kicker">
+          <span class="tiny-tree"
+            ><svg aria-hidden="true"><use href="#tree" /></svg></span
+          ><span>Природа характера</span>
+        </div>
+        <div class="manifesto-body">
+          <h2 id="manifesto-heading">
+            Не каждый аппарат<br />должен быть похож<br />на остальные.
+          </h2>
+          <div class="manifesto-note">
+            <p>
+              Мы начали с простой идеи: у техники может быть характер. Его видно в материале, в
+              открытых соединениях, в цвете — и даже в живом зелёном модуле.
+            </p>
+            <p>
+              КЕДР соединяет выразительную форму и понятное устройство. Всё, что делает его
+              особенным, снаружи.
+            </p>
+            <span class="signature">Создан оставаться собой.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="details-section section-pad" id="details" aria-labelledby="details-heading">
+        <div class="details-heading-row">
+          <div>
+            <span class="section-kicker">Устройство КЕДР 01</span>
+            <h2 id="details-heading">Всё по делу.</h2>
+          </div>
+          <p>
+            Выберите деталь.<br />
+            Узнайте, что за ней стоит.
+          </p>
+        </div>
+        <div class="technical-layout">
+          <div class="technical-image">
+            <img
+              src="/media/exploded.webp"
+              alt="Разнесённая конструкция КЕДР: винтовой блок, цилиндрический корпус, центральный каркас, зелёный модуль и посадочные полозья"
+              loading="lazy"
+              width="1280"
+              height="720"
+            />
+            <button
+              class="hotspot hotspot-drive is-selected"
+              data-component="drive"
+              aria-label="Узнать про винтовой блок"
+              aria-pressed="true"
+            >
+              <span></span><span class="hotspot-label">Винтовой блок</span>
+            </button>
+            <button
+              class="hotspot hotspot-frame"
+              data-component="frame"
+              aria-label="Узнать про каркас"
+              aria-pressed="false"
+            >
+              <span></span><span class="hotspot-label">Каркас</span>
+            </button>
+            <button
+              class="hotspot hotspot-green"
+              data-component="green"
+              aria-label="Узнать про живой модуль"
+              aria-pressed="false"
+            >
+              <span></span><span class="hotspot-label">Живой модуль</span>
+            </button>
+            <button
+              class="hotspot hotspot-landing"
+              data-component="landing"
+              aria-label="Узнать про опоры"
+              aria-pressed="false"
+            >
+              <span></span><span class="hotspot-label">Опоры</span>
+            </button>
+            <span class="drawing-caption">КЕДР 01 / Разнесённый вид</span>
+          </div>
+          <div class="component-list">
+            <details class="component" data-component-panel="drive" open>
+              <summary>
+                <span><small>01</small>Винтовой блок</span
+                ><svg aria-hidden="true"><use href="#plus" /></svg>
+              </summary>
+              <p>
+                Четыре лопасти, выразительная геометрия и открытое крепление. Узел, который задаёт
+                силуэт аппарата с первого взгляда.
+              </p>
+            </details>
+            <details class="component" data-component-panel="frame">
+              <summary>
+                <span><small>02</small>Открытый каркас</span
+                ><svg aria-hidden="true"><use href="#plus" /></svg>
+              </summary>
+              <p>
+                Конструкция видна, соединения доступны. Металлическая рама объединяет основные узлы
+                и поддерживает модульную архитектуру.
+              </p>
+            </details>
+            <details class="component" data-component-panel="green">
+              <summary>
+                <span><small>03</small>Живой модуль</span
+                ><svg aria-hidden="true"><use href="#plus" /></svg>
+              </summary>
+              <p>
+                Самая узнаваемая деталь КЕДР. Живая хвоя смягчает металл и превращает каждый аппарат
+                в отдельный характер.
+              </p>
+            </details>
+            <details class="component" data-component-panel="landing">
+              <summary>
+                <span><small>04</small>Посадочные опоры</span
+                ><svg aria-hidden="true"><use href="#plus" /></svg>
+              </summary>
+              <p>
+                Два трубчатых полоза, простая геометрия и единый нижний каркас. Завершающий штрих к
+                собранному силуэту.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="closing-section section-pad"
+        id="configuration"
+        aria-labelledby="closing-heading"
+      >
+        <span class="section-kicker">Следующая глава — ваша</span>
+        <div class="closing-content">
+          <h2 id="closing-heading">Ваш КЕДР.<br />Ваш маршрут.</h2>
+          <div class="closing-action">
+            <p>Выберите задачи и состав комплекта.<br />Характер уже на борту.</p>
+            <button class="round-cta" data-open-config aria-label="Выбрать комплектацию КЕДР 01">
+              <svg aria-hidden="true"><use href="#arrow-up-right" /></svg></button
+            ><span>Выбрать комплектацию</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-pad">
+      <div class="footer-top">
+        <span>Гражданская авиация<br />с собственным характером.</span
+        ><a href="#top"
+          >Вернуться наверх<svg aria-hidden="true"><use href="#arrow-up-right" /></svg
+        ></a>
+      </div>
+      <div class="footer-wordmark" aria-hidden="true">
+        кедр<span class="wordmark-tree"
+          ><svg><use href="#tree" /></svg
+        ></span>
+      </div>
+      <div class="footer-bottom">
+        <span>© КЕДР, 2026</span><span class="footer-colors" aria-hidden="true"><i></i><i></i></span
+        ><span>Концептуальный проект</span>
+      </div>
+    </footer>
+
+    <dialog class="config-dialog" id="config-dialog" aria-labelledby="config-heading">
+      <button class="dialog-close" data-close-config aria-label="Закрыть конфигуратор">
+        <svg aria-hidden="true"><use href="#close" /></svg>
+      </button>
+      <div class="config-art">
+        <img
+          src="/media/poster.webp"
+          alt="КЕДР 01 в оригинальном сине-жёлтом исполнении"
+          width="1280"
+          height="720"
+        />
+        <div>
+          <span class="section-kicker">Ваш личный экземпляр</span>
+          <p>КЕДР <span>01</span></p>
+        </div>
+      </div>
+      <form class="config-form" id="config-form">
+        <span class="section-kicker">Комплектация</span>
+        <h2 id="config-heading">У каждого<br />свой маршрут.</h2>
+        <fieldset>
+          <legend>Для каких задач?</legend>
+          <div class="config-options">
+            <label
+              ><input type="radio" name="mission" value="Обзор" checked /><span
+                ><strong>Обзор</strong><small>Наблюдение и знакомство с территорией</small></span
+              ><i aria-hidden="true"></i
+            ></label>
+            <label
+              ><input type="radio" name="mission" value="Экспедиция" /><span
+                ><strong>Экспедиция</strong><small>Исследования и специальные маршруты</small></span
+              ><i aria-hidden="true"></i
+            ></label>
+            <label
+              ><input type="radio" name="mission" value="Индивидуальная задача" /><span
+                ><strong>Индивидуальная задача</strong><small>Аппарат под ваш сценарий</small></span
+              ><i aria-hidden="true"></i
+            ></label>
+          </div>
+        </fieldset>
+        <fieldset class="kit-fieldset">
+          <legend>Состав комплекта</legend>
+          <div class="kit-options">
+            <label
+              ><input type="radio" name="kit" value="Базовый" checked /><span>Базовый</span></label
+            ><label
+              ><input type="radio" name="kit" value="Расширенный" /><span>Расширенный</span></label
+            >
+          </div>
+          <p id="kit-description">Аппарат, живой модуль и паспорт конструкции.</p>
+        </fieldset>
+        <div class="config-summary">
+          <span>Ваша конфигурация</span
+          ><strong id="config-summary">КЕДР 01 / Обзор / Базовый</strong>
+        </div>
+        <button class="pill-button config-submit" type="submit">
+          Скачать спецификацию<svg aria-hidden="true"><use href="#arrow-down" /></svg>
+        </button>
+        <p class="config-note">
+          Сохраните выбранную комплектацию в файл.<br />Без регистрации и отправки персональных
+          данных.
+        </p>
+      </form>
+    </dialog>
+
+    <dialog class="film-dialog" id="film-dialog" aria-label="Фильм о КЕДР 01">
+      <button class="dialog-close" data-close-film aria-label="Закрыть фильм">
+        <svg aria-hidden="true"><use href="#close" /></svg>
+      </button>
+      <video
+        id="product-film"
+        controls
+        playsinline
+        preload="none"
+        poster="/media/poster.webp"
+        aria-label="Облёт, разборка и сборка КЕДР 01"
+      ></video>
+      <p>КЕДР 01 — характер в каждой детали.</p>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><div class="noscript-note">
+        Чтобы рассмотреть аппарат в движении и выбрать комплектацию, включите JavaScript. Описание
+        конструкции доступно ниже.
+      </div></noscript
+    >
+  </body>
+</html>

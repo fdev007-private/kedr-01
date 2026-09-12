@@ -1,0 +1,41 @@
+{
+  "name": "kedr-01",
+  "version": "1.0.0",
+  "description": "KEDR 01: an interactive concept aircraft landing page with a scroll-driven assembly sequence.",
+  "private": true,
+  "type": "module",
+  "homepage": "https://dffdeeq.github.io/gpt-land/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dffdeeq/gpt-land.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dffdeeq/gpt-land/issues"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "node scripts/check-assets.mjs && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "lint": "eslint .",
+    "format": "prettier --write index.html README.md CONTRIBUTING.md package.json package-lock.json \"*.config.js\" \"src/**/*.{js,css}\" \"scripts/*.mjs\" \"tests/*.js\" \".github/**/*.yml\"",
+    "format:check": "prettier --check index.html README.md CONTRIBUTING.md package.json package-lock.json \"*.config.js\" \"src/**/*.{js,css}\" \"scripts/*.mjs\" \"tests/*.js\" \".github/**/*.yml\"",
+    "check": "npm run format:check && npm run lint && npm test",
+    "test": "node --test tests/sequence.test.js",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource-variable/cormorant-garamond": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "eslint": "10.10.0",
+    "globals": "17.12.0",
+    "prettier": "3.9.6",
+    "vite": "8.3.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

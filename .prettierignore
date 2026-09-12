@@ -1,0 +1,12 @@
+node_modules/
+dist/
+output/
+test-results/
+playwright-report/
+public/
+**/.env
+**/.env.*
+**/*.env
+**/*.pem
+**/*.key
+**/credentials*
