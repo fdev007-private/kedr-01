@@ -4,7 +4,7 @@
 
 Интерактивный лендинг вымышленного гражданского летательного аппарата. Прокрутка поворачивает КЕДР, разбирает его на узлы и собирает обратно; в конце можно выбрать комплектацию и скачать спецификацию.
 
-**[Открыть сайт →](https://furrydev2007.github.io/kedr-01/)**
+**[Открыть сайт →](https://fdev007-private.github.io/kedr-01/)**
 
 ![КЕДР 01: сине-жёлтый аппарат с чёрным винтом и живым хвойным модулем](public/media/poster.webp)
 
@@ -78,7 +78,7 @@ index.html            Семантическая разметка страниц
 Повторяемый замер production-сборки или опубликованного сайта:
 
 ```sh
-node scripts/measure-sequence.mjs https://furrydev2007.github.io/kedr-01/ --mobile --throttle
+node scripts/measure-sequence.mjs https://fdev007-private.github.io/kedr-01/ --mobile --throttle
 ```
 
 Скрипт прокручивает анимацию вперёд и назад с холодным и прогретым кэшем. Профиль `--throttle` задаёт 5 Мбит/с, задержку 150 мс и замедление CPU в 4 раза. Это лабораторная эмуляция, а не измерение реального телефона. `exactFramePercent` сравнивает желаемый и действительно показанный кадр на каждом animation frame; `repeatRequests` показывает повторные запросы. Тесты также проверяют границы кэша, освобождение памяти, отмену загрузок и режим без `ImageBitmap`.
@@ -102,7 +102,7 @@ Remove-Item Env:PAGES_BASE_PATH, Env:PLAYWRIGHT_PREVIEW
 Проверка уже опубликованного сайта без локального сервера:
 
 ```powershell
-$env:PLAYWRIGHT_BASE_URL = 'https://furrydev2007.github.io/kedr-01/'
+$env:PLAYWRIGHT_BASE_URL = 'https://fdev007-private.github.io/kedr-01/'
 npm run test:e2e
 Remove-Item Env:PLAYWRIGHT_BASE_URL
 ```
